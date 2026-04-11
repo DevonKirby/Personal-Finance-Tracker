@@ -1,0 +1,19 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Alembic
+migrations/versions/*.pyc
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+
+# Misc
+.DS_Store
+*.log
