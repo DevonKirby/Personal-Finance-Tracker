@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:   # To resolve Pylance warning
     from app.models.account import Account
+    from app.models.budget import Budget
 
 class User(Base):
     __tablename__ = "users"
@@ -18,3 +19,4 @@ class User(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc))
 
     accounts: Mapped[list["Account"]] = relationship(back_populates="user")
+    budgets: Mapped[list["Budget"]] = relationship(back_populates="user")
