@@ -3,6 +3,11 @@ from datetime import datetime, timezone
 from sqlalchemy import String, DateTime, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database import Base
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:   # To resolve Pylance warning
+    from app.models.user import User
 
 class Account(Base):
     __tablename__ = "accounts" 
@@ -15,4 +20,4 @@ class Account(Base):
     plaid_account_id: Mapped[str | None] = mapped_column(String(255), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc))
 
-    # user: Mapped["User"] = relationship(back_populates="accounts")
+    user: Mapped["User"] = relationship(back_populates="accounts")
